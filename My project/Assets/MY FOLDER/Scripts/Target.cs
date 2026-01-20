@@ -18,6 +18,7 @@ public class Target : MonoBehaviour
         ForceRandom();
         TorqueRandom();
         SetPosition();
+        OnMouseDown();
     }
 
     // Update is called once per frame
@@ -39,6 +40,23 @@ public class Target : MonoBehaviour
     private void SetPosition()
     {
         transform.position = new Vector3(Random.Range(minPositionX,maxPositionX), positionY);
+    }
+
+    private void OnMouseDown()
+    {
+        while (true)
+        {
+            if (Input.GetMouseButtonDown(0))
+        {
+                Destroy(gameObject);
+        }
+            
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
     }
     
 }
