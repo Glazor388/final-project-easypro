@@ -13,14 +13,15 @@ public class GameManager : MonoBehaviour
     
     public List<GameObject> targets;
     public bool isGameActive;
-    
+
     [SerializeField] private float spawnRate;
+    
+    [SerializeField] private Score score;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        isGameActive = true;
-        StartCoroutine(SpawnTarget());
+
     }
 
     private IEnumerator SpawnTarget()
@@ -48,6 +49,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    
+
+    public void StartGame(float difficulty)
+    {
+        spawnRate /= difficulty;
+        isGameActive = true;
+        StartCoroutine(SpawnTarget());
+        score.StartScore();
+    }
     
 }

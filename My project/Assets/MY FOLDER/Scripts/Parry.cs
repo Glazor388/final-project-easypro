@@ -6,7 +6,7 @@ public class Parry : MonoBehaviour
 {
     private int cost = 3;
     
-    private Score _score;
+    [SerializeField]private Score _score;
     
     private float addForce = 14;
     
@@ -15,22 +15,21 @@ public class Parry : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(ParryCaroutine());
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown("Space"))
+        {
+            StartCoroutine(ParryCaroutine());
+        }
     }
 
     IEnumerator ParryCaroutine()
     {
-        if (Input.GetKeyDown("Space"))
-        {
-            parryObject.SetActive(true);
-            
-        }
+        parryObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         parryObject.SetActive(false);
     }

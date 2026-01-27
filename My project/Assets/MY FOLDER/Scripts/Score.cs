@@ -10,13 +10,18 @@ public class Score : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        score = 0;
-        text.text = "Score: " + score;
+        StartScore();
     }
 
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
+        text.text = "Score: " + score;
+    }
+
+    public void StartScore()
+    {
+        score = 0;
         text.text = "Score: " + score;
     }
     
