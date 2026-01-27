@@ -1,24 +1,31 @@
+using System.Net;
 using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public Rigidbody targetRb;
-     private float minTorque = -10;
-     private float maxTorque = 10;
-     private float maxForce = 16;
-     private float minForce = 12;
-     private float minPositionX = -4;
-     private float maxPositionX = 4;
-     private float positionY = 6;
+
+    [SerializeField] private int cost;
+    [SerializeField] private ParticleSystem particles;
+    
+     public Rigidbody targetRb;
+     
+     private float _minTorque = -2;
+     private float _maxTorque = 2;
+     private float _maxForce = 16;
+     private float _minForce = 12;
+     private float _minPositionX = -4;
+     private float _maxPositionX = 4;
+     private float _positionY = 1;
+     private Score _score;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targetRb = GetComponent<Rigidbody>();
+        _score = FindAnyObjectByType<Score>();
         ForceRandom();
         TorqueRandom();
         SetPosition();
-        OnMouseDown();
     }
 
     // Update is called once per frame
@@ -29,34 +36,33 @@ public class Target : MonoBehaviour
 
     private void TorqueRandom()
     {
-        targetRb.AddTorque(Random.Range(minTorque, maxTorque), Random.Range(minTorque,maxTorque), Random.Range(minTorque,maxTorque) ,ForceMode.Impulse);
+        targetRb.AddTorque(Random.Range(_minTorque, _maxTorque), Random.Range(_minTorque,_maxTorque), Random.Range(_minTorque,_maxTorque) ,ForceMode.Impulse);
     }
 
     private void ForceRandom()
     {
-        targetRb.AddForce(Vector3.up * Random.Range(minForce,maxForce), ForceMode.Impulse);
+        targetRb.AddForce(Vector3.up * Random.Range(_minForce,_maxForce), ForceMode.Impulse);
     }
 
     private void SetPosition()
     {
-        transform.position = new Vector3(Random.Range(minPositionX,maxPositionX), positionY);
+        transform.position = new Vector3(Random.Range(_minPositionX,_maxPositionX), _positionY);
     }
 
     private void OnMouseDown()
     {
-        while (true)
+        if (gameObject.TryGetComponent<Bad>(out Bad bad))
         {
-            if (Input.GetMouseButtonDown(0))
+            GameManager gameManager = FindFirstObjectByType<GameManager>();
+            gameManager.GameOver();
+        }
+        else
         {
-                Destroy(gameObject);
+            _score.AddScore(cost);
+            Instantiate(particles,transform.position,particles.transform.rotation);            
         }
-            
-        }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(gameObject);
+        Destroy(gameObject);           
     }
     
 }

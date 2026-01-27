@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3823724005352041611}
   - component: {fileID: 1224918177756968810}
   - component: {fileID: 2642388152296932273}
+  - component: {fileID: -2754939874409308558}
   m_Layer: 0
   m_Name: Food_Pizza_01
   m_TagString: Untagged
@@ -153,4 +154,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f272aa3f8e074e41a047c7b35a0b120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Target
+  cost: 4
+  particles: {fileID: 3199346384015752365, guid: 307229a5540374aae98859caad2128a3, type: 3}
   targetRb: {fileID: 3823724005352041611}
+--- !u!114 &-2754939874409308558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71484bf874c86940808be96734de7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Good

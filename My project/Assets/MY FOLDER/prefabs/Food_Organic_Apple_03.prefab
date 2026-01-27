@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7443035742375574746}
   - component: {fileID: 8411485706186732693}
   - component: {fileID: 7461767586813041942}
+  - component: {fileID: 8459773354346885918}
   m_Layer: 0
   m_Name: Food_Organic_Apple_03
   m_TagString: Untagged
@@ -153,4 +154,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f272aa3f8e074e41a047c7b35a0b120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Target
+  cost: 3
+  particles: {fileID: 3199346384015752365, guid: 307229a5540374aae98859caad2128a3, type: 3}
   targetRb: {fileID: 8411485706186732693}
+--- !u!114 &8459773354346885918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71484bf874c86940808be96734de7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Good

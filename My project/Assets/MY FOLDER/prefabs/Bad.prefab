@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 2999619326553279313}
   - component: {fileID: 7866741259033738443}
   - component: {fileID: 7894696190121940837}
+  - component: {fileID: 5973711878237363577}
   m_Layer: 0
-  m_Name: Skull_01
+  m_Name: Bad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,4 +154,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f272aa3f8e074e41a047c7b35a0b120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Target
+  cost: 0
+  particles: {fileID: 4758139293545943008, guid: c7ad2532a6eeb40b59033c75e71fa054, type: 3}
   targetRb: {fileID: 7866741259033738443}
+--- !u!114 &5973711878237363577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758002909022086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd73b09364156d342a3001deb3442bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bad
