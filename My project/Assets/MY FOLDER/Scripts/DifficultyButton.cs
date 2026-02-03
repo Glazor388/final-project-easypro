@@ -24,6 +24,7 @@ public class DifficultyButton : MonoBehaviour
     {
         gameManager.StartGame(difficulty);
         canvas.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
     
 }

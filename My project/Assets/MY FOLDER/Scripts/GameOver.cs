@@ -4,11 +4,13 @@ public class GameOver : MonoBehaviour
 {
     
     [SerializeField]private GameManager gameManager;
+
+    private Lives lives;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        lives = FindAnyObjectByType<Lives>();
     }
 
     // Update is called once per frame
@@ -21,7 +23,7 @@ public class GameOver : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Good>(out Good good))
         {
-            gameManager.GameOver();
+            lives.DecreaseLives(gameManager.decreaseLives);
         }
         
     }

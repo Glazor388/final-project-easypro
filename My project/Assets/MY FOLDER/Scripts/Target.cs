@@ -16,13 +16,19 @@ public class Target : MonoBehaviour
      private float _minPositionX = -4;
      private float _maxPositionX = 4;
      private float _positionY = 1;
+     
      private Score _score;
+     private Lives _lives;
+     private GameManager _gameManager;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targetRb = GetComponent<Rigidbody>();
         _score = FindAnyObjectByType<Score>();
+        _lives = FindAnyObjectByType<Lives>();
+        _gameManager = FindAnyObjectByType<GameManager>();
+        
         ForceRandom();
         TorqueRandom();
         SetPosition();
@@ -54,7 +60,7 @@ public class Target : MonoBehaviour
         if (gameObject.TryGetComponent<Bad>(out Bad bad))
         {
             GameManager gameManager = FindFirstObjectByType<GameManager>();
-            gameManager.GameOver();
+            _lives.DecreaseLives(_gameManager.decreaseLives);
         }
         else
         {

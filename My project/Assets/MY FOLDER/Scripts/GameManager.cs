@@ -2,12 +2,16 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI GameOverText;
+    public GameObject pauseMenu;
+    
+    public int decreaseLives = 1;
     
     public Button RestartButton;
     
@@ -16,12 +20,33 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float spawnRate;
     
+    
+    
     [SerializeField] private Score score;
+    [SerializeField] private Lives lives;
+
+    private bool isPaused = false;
+    
+    private int instantlives = 3;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        lives.StartLives(instantlives);
+    }
 
+    void Update()
+    {
+        if (lives.GetLives() <= 0)
+        {
+            GameOver();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseGame();
+        }
+        
     }
 
     private IEnumerator SpawnTarget()
@@ -56,6 +81,23 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         StartCoroutine(SpawnTarget());
         score.StartScore();
+    }
+
+    public void PauseGame()
+    {
+        if (!isPaused)
+        {
+            isPaused = true;
+            pauseMenu.SetActive(isPaused);
+            Time.timeScale = 0;            
+        }
+        else
+        {
+            isPaused = false;
+            pauseMenu.SetActive(isPaused);
+            Time.timeScale = 1;
+        }
+
     }
     
 }
