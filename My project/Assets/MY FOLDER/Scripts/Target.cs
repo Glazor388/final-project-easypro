@@ -55,20 +55,24 @@ public class Target : MonoBehaviour
         transform.position = new Vector3(Random.Range(_minPositionX,_maxPositionX), _positionY);
     }
 
-    private void OnMouseDown()
+    public void DestroyTarget()
     {
-        if (gameObject.TryGetComponent<Bad>(out Bad bad))
+        if (_gameManager.isGameActive)
         {
-            GameManager gameManager = FindFirstObjectByType<GameManager>();
-            _lives.DecreaseLives(_gameManager.decreaseLives);
-        }
-        else
-        {
-            _score.AddScore(cost);
-            Instantiate(particles,transform.position,particles.transform.rotation);            
-        }
+            if (gameObject.TryGetComponent<Bad>(out Bad bad))
+            {
+                GameManager gameManager = FindFirstObjectByType<GameManager>();
+                _lives.DecreaseLives(_gameManager.decreaseLives);
+            }
+            else
+            {
+                _score.AddScore(cost);
+                Instantiate(particles,transform.position,particles.transform.rotation);            
+            }
 
-        Destroy(gameObject);           
+            Destroy(gameObject);             
+        }
+          
     }
     
 }
